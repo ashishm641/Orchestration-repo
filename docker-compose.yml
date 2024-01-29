@@ -1,0 +1,22 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: ./Techdome-backend
+    ports:
+      - "5000:5000"
+    depends_on:
+      - database
+
+  frontend:
+    build:
+      context: ./Techdome-frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+
+  database:
+    image: mongo
+    ports:
+      - "27017:27017"
